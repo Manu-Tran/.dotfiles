@@ -1,0 +1,141 @@
+[options]
+#allow_bold = true
+#audible_bell = false
+#bold_is_bright = true
+#cell_height_scale = 1.0
+#cell_width_scale = 1.0
+#clickable_url = true
+#dynamic_title = true
+
+font = Roboto Mono for Powerline 12
+# font = Monospace 9
+#fullscreen = true
+#icon_name = terminal
+mouse_autohide = true
+#scroll_on_output = false
+scroll_on_keystroke = true
+# Length of the scrollback buffer, 0 disabled the scrollback buffer
+# and setting it to a negative value means "infinite scrollback"
+scrollback_lines = 30000
+#search_wrap = true
+#urgent_on_bell = true
+#hyperlinks = false
+
+# $BROWSER is used by default if set, with xdg-open as a fallback
+#browser = xdg-open
+
+# "system", "on" or "off"
+#cursor_blink = system
+
+# "block", "underline" or "ibeam"
+#cursor_shape = block
+
+# Hide links that are no longer valid in url select overlay mode
+#filter_unmatched_urls = true
+
+# Emit escape sequences for extra modified keys
+#modify_other_keys = false
+
+# set size hints for the window
+#size_hints = false
+
+# "off", "left" or "right"
+scrollbar = right
+
+[colors]
+# If both of these are unset, cursor falls back to the foreground color,
+# and cursor_foreground falls back to the background color.
+#cursor = #dcdccc
+#cursor_foreground = #dcdccc
+
+foreground = #ececdc
+#foreground_bold = #ffffff
+# background = #3f3f3f
+
+# 20% background transparency (requires a compositor)
+background = rgba(40, 40, 40, 0.5)
+# black
+    color0= #282C34
+    color8= #3E4452
+
+# red
+    color1= #E06C75
+    color9= #BE5046
+
+# green
+    color2= #98C379
+    color10= #98C379
+
+# yellow
+    color3= #E5C07B
+    color11= #D19A66
+
+# blue
+    color4= #61AFEF
+    color12= #61AFEF
+
+# magenta
+    color5= #C678DD
+    color13= #C678DD
+
+# cyan
+    color6= #56B6C2
+    color14= #56B6C2
+
+# white
+    color7= #ABB2BF
+    color15= #5C6370
+
+# If unset, will reverse foreground and background
+# highlight = #2f2f2f
+
+# Colors from color0 to color254 can be set
+# Color of the usual font + background of hostname
+# color0 = #3f3f3f
+
+# # Color of alerts
+# color1 = #b05050
+
+# # Color of validations
+# color2 = #60b48a
+
+# # Color of the foreground of the hostname in Powerline
+# color3 = #ffbf8f
+
+# # Color of the backgroud of the path in Poweline
+# color4 = #506070
+# color5 = #dc8cc3
+# color6 = #8cd0d3
+
+# # Color of the background of the time in Powerline
+# color7 = #dcdccc
+# color8 = #709080
+# color9 = #dca3a3
+# # Color of executable file
+# color10 = #63bf7f
+
+# color11 = #f0dfaf
+
+# # Color of the folder in ls
+# color12 = #648ff3
+
+# # Color of jpg file in ls
+# color13 = #ec93d3
+
+# # Color of the symbolics links in ls
+# color14 = #93d0f3
+
+# color15 = #ffffff
+
+[hints]
+#font = Monospace 12
+#foreground = #dcdccc
+#background = #3f3f3f
+#active_foreground = #e68080
+#active_background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
+
+# vim: ft=dosini cms=#%s

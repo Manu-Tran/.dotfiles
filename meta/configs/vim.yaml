@@ -1,0 +1,19 @@
+- defaults:
+    link:
+        relink: true
+    git:
+        method: clone-or-pull
+
+- link :
+    ~/.vimrc:
+        path: editors/vim/vimrc
+
+- git :
+    "~/.vim/bundle/Vundle.vim":
+        url: 'https://github.com/VundleVim/Vundle.vim.git'
+
+- create:
+    - ~/.vim/buffers # Required to prevent yankring from writing in $HOME
+
+- shell:
+    - [vim +PluginInstall +qall]

@@ -1,0 +1,26 @@
+- defaults:
+    link:
+        relink: true
+    git:
+        method: clone-or-pull
+
+- link:
+    ~/.zshrc:
+        path: terminal/zsh/zshrc
+    ~/.zshenv:
+        path: terminal/zsh/zshenv
+
+- git:
+    '~/.oh-my-zsh/':
+        url: 'https://github.com/robbyrussell/oh-my-zsh.git'
+    '~/.oh-my-zsh/custom/plugins/zsh-autosuggestions':
+        url: 'https://github.com/zsh-users/zsh-autosuggestions'
+    '~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting':
+        url: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+    '~/.oh-my-zsh/custom/themes/powerlevel10k':
+        url: 'https://github.com/romkatv/powerlevel10k.git'
+    '~/.oh-my-zsh/custom/plugins/zsh-completions':
+        url: "https://github.com/zsh-users/zsh-completions.git"
+
+- shell:
+    - [chsh -s "$(command -v zsh)"]

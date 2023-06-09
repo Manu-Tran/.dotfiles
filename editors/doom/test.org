@@ -1,0 +1,122 @@
+#+title: ElispTests
+
+* Window layout
+#+begin_src elisp
+(delete-other-windows)
+;; right pane
+(find-file "~/.doom.d/bindings.el")
+(find-file "~/.doom.d/test.org")
+(+evil/window-vsplit-and-follow)
+;; up left pane
+(find-file "~/.doom.d/init.el")
+(+evil/window-split-and-follow)
+;; down left pane
+(find-file "~/.doom.d/config.el")
+(evil-window-left 1)
+(evil-window-right 1)
+(evil-window-down 1)
+#+end_src
+
+* Eshell commands
+#+begin_src elisp
+(eshell-command "ls")
+#+end_src
+* If conditions
+#+begin_src elisp
+(defvar yolo nil)
+(setq yolo nil)
+(if yolo "a" "b")
+#+end_src
+
+#+begin_src elisp
+(if 4
+    'true
+  'false)
+
+(if nil
+    'true
+  'false)
+#+end_src
+* Var scoping
+#+begin_src elisp
+(setq yolo 5)
+(let ((yolo "t"))
+(print yolo)
+(print yolo))
+#+end_src
+* ls dir
+#+begin_src elisp
+;; (shell-command "ls ~/Exercism/go")
+(directory-files "~/" nil "Exer*")
+
+#+end_src
+
+#+RESULTS:
+| Exercism |
+
+* equals
+#+begin_src elisp
+
+(print (eq exercism-current-track "emacs-lisp"))
+
+#+end_src
+
+#+begin_src elisp
+(print (string-equal exercism-current-track "emacs-lisp"))
+(string-equal "yolo" "yolo")
+#+end_src
+#+begin_src elisp
+(setq yolo nil)
+(when (not yolo) (print 5))
+#+end_src
+* Ranges
+#+begin_src elisp
+(number-sequence 1 25)
+
+(cl-map 'list #'number-to-string (number-sequence 2015 2022))
+
+#+end_src
+* Shell script
+#+begin_src elisp
+(shell-command "~/Programmation/aoc/bin/is-part-two.sh ~/Programmation/aoc/2020/day5/README.md")
+#+end_src
+
+#+RESULTS:
+: 1
+#+begin_src elisp
+(concat "abs" nil)
+
+#+end_src
+* regex
+(string-match "(.*)-" "a,b,c,d,grid")
+(match-string 1 "a,b,c,d,grid")
+
+
+#+begin_src elisp
+(string-match "\\(.*\\)," "a,grid")
+(match-string 1 "a,grid")
+
+#+end_src
+
+#+begin_src elisp
+(match-string 1 "a,grid")
+
+#+end_src
+
+#+RESULTS:
+: a
+* Scoping
+
+#+begin_src elisp
+(defvar a "")
+(setq a "yolo")
+(defun bla(a)
+  (when a (setq a "swag"))
+  a
+  )
+(bla a)
+a
+#+end_src
+
+#+RESULTS:
+: yolo

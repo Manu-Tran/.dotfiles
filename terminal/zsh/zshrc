@@ -1,0 +1,368 @@
+
+# zmodload zsh/zprof
+
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+zmodload zsh/zprof
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+# autoload bashcompinit
+# bashcompinit
+
+# You may need to manually set your language environment
+#export LANG=fr_FR.UTF-8
+# export LC_ALL=""
+
+# If you come from bash you might have to change your $PATH.
+  export PATH=$HOME/bin:/usr/local/bin:$HOME/.local/bin:$PATH
+
+# Added Path
+  export PATH=$HOME/Scripts:$HOME/snap:$PATH
+
+# Do not autocorrect
+  unsetopt correct_all
+
+POWERLEVEL9K_MODE="awesome-fontconfig"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+#COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+HIST_STAMPS="dd.mm.yyyy"
+export HISTSIZE=100000
+export HISTFILE="$HOME/.history"
+export SAVEHIST=$HISTSIZE
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+  # archlinux
+  common-aliases
+  # command-not-found
+  # copypath
+  # copyfile
+  # cp
+  git
+  kubectl
+  per-directory-history
+  # sudo
+  ssh-agent
+  systemd
+  tmux
+  # vi-mode
+  wd
+  web-search
+  zsh-autosuggestions
+  zsh-completions
+  zsh-syntax-highlighting
+  z
+)
+
+
+# User configuration
+
+ export MANPATH="/usr/local/man:$MANPATH"
+
+# Alisases
+ alias 0="cd ~/CurrentProject"
+ alias :q="exit"
+ alias duda="du -ahd 1"
+ alias duhs="du -hs * | sort -h"
+ # alias mimeo="mimeopen"
+ alias mount-verbose="mount -v | grep \"^/\" | awk '{print \"\nPartition identifier: \" $1  \"\n Mountpoint: \"  $3}\'"
+ alias google-java-format="java ~/Repositories/google-java-format/core/target/google-java-format-1.10-SNAPSHOT-all-deps.jar"
+ alias tmuxr="tmux -u new-session -t 0"
+ alias J="| jq"
+ alias gcocs="gco \$(current-staging)"
+
+#Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+  export ZSH_THEME="robbyrussell"
+else
+  export EDITOR='vim'
+  export ZSH_THEME="powerlevel10k/powerlevel10k"
+fi
+source $ZSH/oh-my-zsh.sh
+
+# Adding personal autocompletions
+# fpath=(~/my-config/Scripts/autocomplete $fpath)
+
+# ssh
+export SSH_KEY_PATH="~/.ssh/id_rsa"
+# eval `ssh-agent`
+# ssh-add ~/.ssh/id_rsa
+
+# Go to https://user-images.githubusercontent.com/704406/43988708-64c0fa52-9d4c-11e8-8cf9-c4d4b97a5200.png for color code
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir virtualenv vcs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs time)
+POWERLEVEL9K_ANACONDA_LEFT_DELIMITER=''
+POWERLEVEL9K_ANACONDA_RIGHT_DELIMITER=''
+POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_VCS_HIDE_TAGS=true
+
+# POWERLEVEL9K_CONTEXT_DEFAULT_BACKGROUND='238'
+# POWERLEVEL9K_CONTEXT_DEFAULT_FOREGROUND='178'
+# POWERLEVEL9K_SHORTEN_DIR_LENGTH=2
+# POWERLEVEL9K_DIR_HOME_SUBFOLDER_BACKGROUND='026'
+# POWERLEVEL9K_DIR_HOME_BACKGROUND='061'
+# POWERLEVEL9K_DIR_BACKGROUND='060'
+# POWERLEVEL9K_DIR_PATH_HIGHLIGHT_BOLD=true
+
+# `git hub colors`
+# POWERLEVEL9K_VCS_CLEAN_BACKGROUND='236'
+# POWERLEVEL9K_VCS_CLEAN_BACKGROUND='119'
+# POWERLEVEL9K_VCS_CLEAN_FOREGROUND='236'
+# POWERLEVEL9K_VCS_UNTRACKED_BACKGROUND='214'
+# POWERLEVEL9K_VCS_UNTRACKED_FOREGROUND='238'
+# POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='167'
+# POWERLEVEL9K_VCS_MODIFIED_FOREGROUND='238'
+
+
+
+#POWERLEVEL9K_ANACONDA_FOREGROUND='teal'
+POWERLEVEL9K_ANACONDA_BACKGROUND='045'
+POWERLEVEL9K_VIRTUALENV_BACKGROUND='045'
+POWERLEVEL9K_RPROMPT_ON_NEWLINE=true
+
+# Defer initialization of nvm until nvm, node or a node-dependent command is
+# run. Ensure this block is only run once if .bashrc gets sourced multiple times
+# by checking whether __init_nvm is a function.
+if [ -s "$HOME/.nvm/nvm.sh" ]; then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+    alias nvm='unalias nvm node npm && . "$NVM_DIR"/nvm.sh && nvm'
+    alias node='unalias nvm node npm && . "$NVM_DIR"/nvm.sh && node'
+    alias npm='unalias nvm node npm && . "$NVM_DIR"/nvm.sh && npm'
+fi
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# if [ -f `which powerline-daemon` ]; then
+#   powerline-daemon -q
+#   POWERLINE_BASH_CONTINUATION=1
+#   POWERLINE_BASH_SELECT=1
+#   . /usr/share/powerline/bash/powerline.sh
+# fi
+
+
+################### Keybindings ################################
+
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+[[ -n "$key[Up]"   ]] && bindkey -- "$key[Up]"   up-line-or-history
+[[ -n "$key[Down]" ]] && bindkey -- "$key[Down]" down-line-or-history
+# [[ -n "$key[Left]"   ]] && bindkey -- "$key[Left]" backward-word
+# [[ -n "$key[Right]" ]] && bindkey -- "$key[Right]" forward-word
+
+bindkey "^P" up-line-or-beginning-search
+bindkey "^N" down-line-or-beginning-search
+bindkey -r "^K"
+bindkey -r "^J"
+bindkey "^T" per-directory-history-toggle-history
+bindkey "^G" insert-last-word
+bindkey "^B" backward-word
+bindkey "^F" forward-word
+# bindkey "^K" up-line-or-beginning-search
+# bindkey "^J" down-line-or-beginning-search
+# bindkey "^H" backward-char
+# bindkey "^D" backward-delete-char
+# bindkey "^L" forward-char
+# bindkey "^N" clear-screen
+
+####################### Custom autocompletion ######################
+
+compctl -/ -W ~/CurrentProject uvim
+function swap()
+{
+  local TMPFILE=tmp.$$
+  mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE "$2"
+}
+
+######################## Unaliases #################################
+
+#unalias fd
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+export WORKON_HOME=$HOME/.virtualenvs
+export PROJECT_HOME=$HOME/Devel
+# source ~/.local/bin/virtualenvwrapper.sh
+POWERLEVEL9K_DISABLE_GITSTATUS=true
+
+######################## ZSH Autopair ##############################
+if [[ ! -d ~/.zsh-autopair ]]; then
+  git clone https://github.com/hlissner/zsh-autopair ~/.zsh-autopair
+fi
+
+source ~/.zsh-autopair/autopair.zsh
+autopair-init
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/emmanuel.tran/opt/miniconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/emmanuel.tran/opt/miniconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/emmanuel.tran/opt/miniconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/emmanuel.tran/opt/miniconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+# store key in the login keychain instead of aws-vault managing a hidden keychain
+export AWS_VAULT_KEYCHAIN_NAME=login
+
+# tweak session times so you dont have to re-enter passwords every 5min
+export AWS_SESSION_TTL=24h
+export AWS_ASSUME_ROLE_TTL=1h
+#export JAVA_HOME=$(/usr/libexec/java_home -v 14)
+
+function mongo-toolbox() {
+    chart_name="mongo-toolbox-low-privilege"
+    if [[ -z "$1" ]]; then
+        toolbox=$(kubectl get pod -o name | grep "$chart_name" | cut -d'-'  -f5- | rev | cut -d'-' -f3-  | rev)
+        if [[ -n "$toolbox" ]]; then
+            echo "$(tput setaf 2)$toolbox"
+        else
+            echo "$(tput setaf 1)No mongo toolbox in the current namespace"
+        fi
+    else
+        pod=$(kubectl get pod -l app="$chart_name-$1" -o name)
+        command=${2:-"/bin/bash"}
+        if [[ -n "$pod" ]]; then
+            kubectl exec -it $pod $command
+        else
+            echo "$(tput setaf 1)No toolbox $1"
+        fi
+    fi
+}
+
+#export PATH="$HOME/.jenv/bin:$PATH"
+#eval "$(jenv init -)"
+
+source ~/.cloudops-cli.completion
+export PATH="/usr/local/opt/lsof/bin:$PATH"
+export PATH="/usr/local/Cellar/emacs-mac/emacs-27.2-mac-8.2/bin:$PATH"
+ulimit -n 32768
+#export DEVENV_MODE=BACKEND
+export PATH="/usr/local/opt/openjdk@17/bin:$PATH"
+
+# google-cloud-sdk brew caveat
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc"
+source "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc"
+
+# BEGIN ANSIBLE MANAGED BLOCK
+# Add homebrew binaries to the path.
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:${PATH?}"
+
+# Force certain more-secure behaviours from homebrew
+export HOMEBREW_NO_INSECURE_REDIRECT=1
+export HOMEBREW_CASK_OPTS=--require-sha
+export HOMEBREW_DIR=/opt/homebrew
+export HOMEBREW_BIN=/opt/homebrew/bin
+
+# Load python shims
+eval "$(pyenv init -)"
+
+# Load ruby shims
+eval "$(rbenv init -)"
+
+# Prefer GNU binaries to Macintosh binaries.
+export PATH="/opt/homebrew/opt/coreutils/libexec/gnubin:${PATH}"
+
+# Add AWS CLI to PATH
+export PATH="/opt/homebrew/opt/awscli@1/bin:$PATH"
+
+# Add datadog devtools binaries to the PATH
+export PATH="${HOME?}/dd/devtools/bin:${PATH?}"
+
+# Point GOPATH to our go sources
+export GOPATH="${HOME?}/go"
+
+# Add binaries that are go install-ed to PATH
+export PATH="${GOPATH?}/bin:${PATH?}"
+
+# Point DATADOG_ROOT to ~/dd symlink
+export DATADOG_ROOT="${HOME?}/dd"
+
+# Tell the devenv vm to mount $GOPATH/src rather than just dd-go
+export MOUNT_ALL_GO_SRC=1
+
+# store key in the login keychain instead of aws-vault managing a hidden keychain
+export AWS_VAULT_KEYCHAIN_NAME=login
+
+# tweak session times so you don't have to re-enter passwords every 5min
+export AWS_SESSION_TTL=24h
+export AWS_ASSUME_ROLE_TTL=1h
+
+# Helm switch from storing objects in kubernetes configmaps to
+# secrets by default, but we still use the old default.
+export HELM_DRIVER=configmap
+
+# Go 1.16+ sets GO111MODULE to off by default with the intention to
+# remove it in Go 1.18, which breaks projects using the dep tool.
+# https://blog.golang.org/go116-module-changes
+export GO111MODULE=auto
+export GOPRIVATE=github.com/DataDog
+# END ANSIBLE MANAGED BLOCK
+export WORKSPACE="$(echo $USER | sed s/\\.//g)"
+export PATH="/opt/homebrew/opt/openjdk@17/bin:$PATH"
+source <(kubectl completion zsh)
+
+alias python="/usr/bin/python3"
+alias ls="ls --color=tty"
+
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
+
+tmux-window-name() {
+    if [ "$TERM" = "screen" ] && [ -n "$TMUX" ]; then
+       ($TMUX_PLUGIN_MANAGER_PATH/tmux-window-name/scripts/rename_session_windows.py &)
+    fi
+}
+# add-zsh-hook chpwd tmux-window-name
+
+# zprof
+git-find-pr () {
+	open https://github.com/DataDog/$(pwd | rev | cut -d / -f 1 | rev | sed "s/logs-backend-./logs-backend/")/pull/$(git log --reverse --format=%s --ancestry-path $1..origin/prod | grep "^Merge pull request #" | head -n 1 | cut -d " " -f 4 | tr -d "#")
+}
+
+export DOTNET_ROOT_ARM64=/usr/local/share/dotnet
+export DOTNET_ROOT_X64=/usr/local/share/dotnet/x64
+export DOTNET_ROOT="$(dirname $(which dotnet))"
+export PATH=/usr/local/share/dotnet:$PATH

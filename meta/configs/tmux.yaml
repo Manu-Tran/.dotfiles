@@ -1,0 +1,9 @@
+- defaults:
+    link:
+        relink: true
+    git:
+        method: clone-or-pull
+
+- link:
+    ~/.tmux.conf:
+      path: terminal/tmux/tmux.conf
